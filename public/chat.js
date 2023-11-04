@@ -35,7 +35,7 @@ socket.on('mensagem', data => {
     msgDiv.innerHTML += `
     <div class="novaMensagem">
         <label class="form-label">
-            <strong> ${data.nome} </strong> <output id="novaMensagem">${data.msg}</output>
+            <strong> ${data.nome} </strong> <span id="novaMensagem">${data.msg}</span>
         </label>
     </div>`
 });
@@ -46,7 +46,9 @@ socket.on('mensagem', data => {
 const sintetizador = window.speechSynthesis;
 
 function ouvir() {
-    let texto = document.getElementById('novaMensagem').value;
+    let valor = document.querySelectorAll('#novaMensagem');
+    let conta = valor.length;
+    let texto = valor[conta-1].textContent;
     let voz = sintetizador.getVoices();
 
     if (voz.length !== 0) {
