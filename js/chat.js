@@ -71,19 +71,22 @@ botaoOuvir.onclick = ouvir;
 
 
 function falar() {
-    if (window.SpeechRecognition || window.webkitSpeechRecognition) {
-        var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
-
-        let minhaFala = new SpeechRecognition();
+    if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        const minhaFala = new SpeechRecognition();
         minhaFala.lang = 'pt-BR';
 
         minhaFala.start();
 
         minhaFala.addEventListener('result', (event) => {
-            var result = event.results[0][0].transcript;
-            console.log(result);
-            inputMsg.value = result;
+            const result = event.results[0][0].transcript;
+            console.log(`Texto reconhecido: ${result}`);
+            if (inputMsg) {
+                inputMsg.value = result;
+            }
         });
+    } else {
+        console.error('Reconhecimento de voz não suportado neste navegador.');
     }
 }
 
