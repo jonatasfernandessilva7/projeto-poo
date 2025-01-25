@@ -1,7 +1,7 @@
 import express from 'express';
 import path from 'path';
 
-const porta = 3000;
+const porta = 8000;
 const app = express();
 const serverHttp = require('http').createServer(app);
 const io = require('socket.io')(serverHttp);
