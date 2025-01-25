@@ -9,7 +9,7 @@
   "description": "meu PWA.",
   "icons": [
     {
-      "src": "images/icon-192x192.png",
+      "src": "public/images/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     }
