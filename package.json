@@ -1,11 +1,12 @@
 {
-  "name": "projeto-poo",
+  "name": "projeto-poo: chat inclusivo",
   "version": "1.0.0",
-  "description": "projeto-poo",
+  "description": "projeto-poo: chat inclusivo para pessoas com necessidades especiais",
   "scripts": {
-    "dev": " nodemon src/server.js"
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js"
   },
-  "author": "",
+  "author": "jonatas fernandes",
   "license": "ISC",
   "devDependencies": {
     "express": "^4.18.2",
