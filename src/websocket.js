@@ -1,4 +1,4 @@
-import { io } from './http';
+import { io } from './http.js';
 
 const users = [];
 const mensagens = [];
