@@ -1,4 +1,4 @@
-var socket = io();
+var socket = io("https://projeto-poo-egea.onrender.com");
 
 const buscaURL = new URLSearchParams(window.location.search);
 const nomeUsuario = buscaURL.get('nomeUsuario');
