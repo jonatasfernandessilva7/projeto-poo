@@ -14,7 +14,7 @@ const io = new Server(serverHttp, {
     cors: {
         origin: "https://jonatasfernandessilva7.github.io", 
         methods: ["GET", "POST"] 
-    }}});
+    }});
 
 const corsOptions = {
     origin: 'https://jonatasfernandessilva7.github.io',
