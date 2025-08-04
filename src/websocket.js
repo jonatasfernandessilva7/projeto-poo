@@ -14,7 +14,7 @@ io.on('connection', (socket) => {
         if(noChat){
             noChat.idUser = socket.id;
         }else{
-            users.push({nome: data.nomeUsuario, idUser: socket.id});
+            users.push({nomeUsuario: data.nomeUsuario, idUser: socket.id});
         }
 
         console.log(users);
@@ -22,8 +22,8 @@ io.on('connection', (socket) => {
 
     socket.on('mensagem', data => {
         const mensagem  = {
-            nome: data.nomeUsuario,
-            msg: data.mensagem,
+            nomeUsuario: data.nomeUsuario,
+            mensagem: data.mensagem,
             dataAt: new Date()
         }
         mensagens.push(mensagem);
