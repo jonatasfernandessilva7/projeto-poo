@@ -16,14 +16,17 @@ nomeDeUsuario.innerHTML = `Bem vindo ${nomeUsuario}`
 
 const inputMsg = document.getElementById('inputMsg');
 
-inputMsg.addEventListener('keypress', (event) => {
+inputMsg.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
-        const mensagem = event.target.value;
-        console.log(mensagem);
-        data = {
+        console.log('inputMsg:', inputMsg);
+        const mensagem = event.target.value.trim();
+        if (mensagem.length === 0) return;
+
+        const data = {
             nomeUsuario,
             mensagem
-        }
+        };
+
         socket.emit('mensagem', data);
         event.target.value = '';
     }
@@ -77,21 +80,28 @@ function falar() {
         const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
         const minhaFala = new SpeechRecognition();
         minhaFala.lang = 'pt-BR';
+        minhaFala.interimResults = false;
 
         minhaFala.start();
 
-        minhaFala.addEventListener('result', (event) => {
+        minhaFala.onresult = (event) => {
             const result = event.results[0][0].transcript;
             console.log(`Texto reconhecido: ${result}`);
             if (inputMsg) {
                 inputMsg.value = result;
+                inputMsg.focus(); // opcional
             }
-        });
+        };
+
+        minhaFala.onerror = (e) => {
+            console.error('Erro de reconhecimento de voz:', e.error);
+        };
     } else {
         console.error('Reconhecimento de voz não suportado neste navegador.');
     }
 }
 
 const botaoFalar = document.getElementById('falarMsg');
+console.log('botaoFalar:', botaoFalar);
 
 botaoFalar.onclick = falar;
