@@ -31,8 +31,6 @@ function enviarMensagem() {
 }
 
 const buttonEnviarMensagemEscrita = document.getElementById('enviarMsg');
-
-buttonEnviarMensagemEscrita.onclick = enviarMensagem;
 console.log(buttonEnviarMensagemEscrita);
 
 socket.on('mensagem', data => {
@@ -73,8 +71,6 @@ function ouvir() {
 
 const botaoOuvir = document.getElementById('ouvirMsg');
 
-botaoOuvir.onclick = ouvir;
-
 /////////////////////////////////////////////////////////////////////////////////
 
 
@@ -105,6 +101,9 @@ function falar() {
 }
 
 const botaoFalar = document.getElementById('falarMsg');
-console.log('botaoFalar:', botaoFalar);
 
-botaoFalar.onclick = falar;
+///////////////////////////////////////////////////////////////
+
+buttonEnviarMensagemEscrita.addEventListener('click', enviarMensagem);
+botaoOuvir.addEventListener('click', ouvir);
+botaoFalar.addEventListener('click', falar);
