@@ -18,7 +18,7 @@ const inputMsg = document.getElementById('inputMsg');
 function enviarMensagem() {
     console.log('inputMsg:', inputMsg);
     event.preventDefault();
-    const mensagem = event.target.value.trim();
+    const mensagem = inputMsg.value.trim();
     if (mensagem.length === 0) return;
     
     const data = {
