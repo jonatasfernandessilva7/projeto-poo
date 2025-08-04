@@ -1,5 +1,5 @@
-window.addEventListener('DOMContentLoaded', () => {
-    
+window.addEventListener("load", (event) => {
+    console.log("page is fully loaded");
     const socket = io("https://projeto-poo-egea.onrender.com");
 
     const buscaURL = new URLSearchParams(window.location.search);
