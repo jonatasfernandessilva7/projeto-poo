@@ -15,23 +15,21 @@ const nomeDeUsuario = document.getElementById('nomeUsuario');
 nomeDeUsuario.innerHTML = `Bem vindo ${nomeUsuario}`
 const inputMsg = document.getElementById('inputMsg');
 
-function enviarMensagem() {
-    console.log('inputMsg:', inputMsg);
+function enviarMensagem(event) {
     event.preventDefault();
     const mensagem = inputMsg.value.trim();
-    const dataFormatada = new Date(data.dataAt).toLocaleString();
     if (mensagem.length === 0) return;
-    
+
     const data = {
         nomeUsuario,
-        mensagem,
-        dataAt
+        mensagem
     };
     
     socket.emit('mensagem', data);
     event.target.value = '';
 }
 
+const dataFormatada = new Date().toLocaleString();
 const buttonEnviarMensagemEscrita = document.getElementById('enviarMsg');
 console.log(buttonEnviarMensagemEscrita);
 
@@ -43,7 +41,7 @@ socket.on('mensagem', data => {
     msgDiv.innerHTML += `
     <div class="novaMensagem">
         <label class="form-label">
-            <strong>${data.nomeUsuario} (${dataFormatada}) :</strong> 
+            <strong>${data.nomeUsuario} (${dataFormatada}) : </strong> 
             <span class="novaMensagem">${data.mensagem}</span>
         </label>
     </div>`;
