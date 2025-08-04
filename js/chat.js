@@ -41,7 +41,7 @@ socket.on('mensagem', data => {
     msgDiv.innerHTML += `
     <div class="novaMensagem">
         <label class="form-label">
-            <strong> ${data.nome} </strong> <span id="novaMensagem">${data.msg}</span>
+            <strong> ${data.nomeUsuario} </strong> <span class="novaMensagem">${data.mensagem}</span>
         </label>
     </div>`
 });   
