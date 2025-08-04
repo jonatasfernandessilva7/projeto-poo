@@ -23,7 +23,8 @@ function enviarMensagem() {
     
     const data = {
         nomeUsuario,
-        mensagem
+        mensagem,
+        dataAt
     };
     
     socket.emit('mensagem', data);
