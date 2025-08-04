@@ -34,17 +34,18 @@ const buttonEnviarMensagemEscrita = document.getElementById('enviarMsg');
 console.log(buttonEnviarMensagemEscrita);
 
 socket.on('mensagem', data => {
-    console.log(data);
-    
+    console.log("Mensagem recebida:", data); 
+
     const msgDiv = document.getElementById('mensagem');
-    
+
     msgDiv.innerHTML += `
     <div class="novaMensagem">
         <label class="form-label">
-            <strong> ${data.nomeUsuario} </strong> <span class="novaMensagem">${data.mensagem}</span>
+            <strong>${data.nomeUsuario}</strong> 
+            <span class="novaMensagem">${data.mensagem}</span>
         </label>
-    </div>`
-});   
+    </div>`;
+});  
 
 //////////////////////////////////////////////////////////////////////////
 
