@@ -37,11 +37,12 @@ socket.on('mensagem', data => {
     console.log("Mensagem recebida:", data); 
 
     const msgDiv = document.getElementById('mensagem');
-
+    const dataFormatada = new Date(dados.dataAt).toLocaleString();
+    
     msgDiv.innerHTML += `
     <div class="novaMensagem">
         <label class="form-label">
-            <strong>${data.nomeUsuario}</strong> 
+            <strong>${data.nomeUsuario} (${dataFormatada}) :</strong> 
             <span class="novaMensagem">${data.mensagem}</span>
         </label>
     </div>`;
