@@ -16,23 +16,17 @@ nomeDeUsuario.innerHTML = `Bem vindo ${nomeUsuario}`
 const inputMsg = document.getElementById('inputMsg');
 
 function enviarMensagem() {
-
-    inputMsg.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter') {
-            console.log('inputMsg:', inputMsg);
-            const mensagem = event.target.value.trim();
-            if (mensagem.length === 0) return;
+    console.log('inputMsg:', inputMsg);
+    const mensagem = event.target.value.trim();
+    if (mensagem.length === 0) return;
     
-            const data = {
-                nomeUsuario,
-                mensagem
-            };
+    const data = {
+        nomeUsuario,
+        mensagem
+    };
     
-            socket.emit('mensagem', data);
-            event.target.value = '';
-        }
-    });
-
+    socket.emit('mensagem', data);
+    event.target.value = '';
     socket.on('mensagem', data => {
         console.log(data);
     
