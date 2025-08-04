@@ -17,6 +17,7 @@ const inputMsg = document.getElementById('inputMsg');
 
 function enviarMensagem() {
     console.log('inputMsg:', inputMsg);
+    event.preventDefault();
     const mensagem = event.target.value.trim();
     if (mensagem.length === 0) return;
     
@@ -27,24 +28,25 @@ function enviarMensagem() {
     
     socket.emit('mensagem', data);
     event.target.value = '';
-    socket.on('mensagem', data => {
-        console.log(data);
-    
-        const msgDiv = document.getElementById('mensagem');
-    
-        msgDiv.innerHTML += `
-        <div class="novaMensagem">
-            <label class="form-label">
-                <strong> ${data.nome} </strong> <span id="novaMensagem">${data.msg}</span>
-            </label>
-        </div>`
-    });   
 }
 
 const buttonEnviarMensagemEscrita = document.getElementById('enviarMsg');
 
 buttonEnviarMensagemEscrita.onclick = enviarMensagem;
 console.log(buttonEnviarMensagemEscrita);
+
+socket.on('mensagem', data => {
+    console.log(data);
+    
+    const msgDiv = document.getElementById('mensagem');
+    
+    msgDiv.innerHTML += `
+    <div class="novaMensagem">
+        <label class="form-label">
+            <strong> ${data.nome} </strong> <span id="novaMensagem">${data.msg}</span>
+        </label>
+    </div>`
+});   
 
 //////////////////////////////////////////////////////////////////////////
 
