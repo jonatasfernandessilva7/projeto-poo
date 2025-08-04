@@ -19,6 +19,7 @@ function enviarMensagem() {
     console.log('inputMsg:', inputMsg);
     event.preventDefault();
     const mensagem = inputMsg.value.trim();
+    const dataFormatada = new Date(data.dataAt).toLocaleString();
     if (mensagem.length === 0) return;
     
     const data = {
@@ -38,7 +39,6 @@ socket.on('mensagem', data => {
     console.log("Mensagem recebida:", data); 
 
     const msgDiv = document.getElementById('mensagem');
-    const dataFormatada = new Date(data.dataAt).toLocaleString();
     
     msgDiv.innerHTML += `
     <div class="novaMensagem">
