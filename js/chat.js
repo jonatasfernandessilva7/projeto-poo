@@ -37,7 +37,7 @@ socket.on('mensagem', data => {
     console.log("Mensagem recebida:", data); 
 
     const msgDiv = document.getElementById('mensagem');
-    const dataFormatada = new Date(dados.dataAt).toLocaleString();
+    const dataFormatada = new Date(data.dataAt).toLocaleString();
     
     msgDiv.innerHTML += `
     <div class="novaMensagem">
