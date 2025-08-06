@@ -24,7 +24,7 @@ function enviarMensagem(event) {
         nomeUsuario,
         mensagem
     };
-    
+
     socket.emit('mensagem', data);
     event.target.value = '';
 }
@@ -34,10 +34,10 @@ const buttonEnviarMensagemEscrita = document.getElementById('enviarMsg');
 console.log(buttonEnviarMensagemEscrita);
 
 socket.on('mensagem', data => {
-    console.log("Mensagem recebida:", data); 
+    console.log("Mensagem recebida:", data);
 
     const msgDiv = document.getElementById('mensagem');
-    
+
     msgDiv.innerHTML += `
     <div class="novaMensagem">
         <label class="form-label">
@@ -45,7 +45,7 @@ socket.on('mensagem', data => {
             <span class="novaMensagem">${data.mensagem}</span>
         </label>
     </div>`;
-});  
+});
 
 //////////////////////////////////////////////////////////////////////////
 
@@ -53,7 +53,7 @@ socket.on('mensagem', data => {
 const sintetizador = window.speechSynthesis;
 
 function ouvir() {
-    let valor = document.querySelectorAll('#novaMensagem');
+    let valor = document.querySelectorAll('.novaMensagem');
     let conta = valor.length;
     let texto = valor[conta-1].textContent;
     let voz = sintetizador.getVoices();
@@ -89,7 +89,7 @@ function falar() {
             console.log(`Texto reconhecido: ${result}`);
             if (inputMsg) {
                 inputMsg.value = result;
-                inputMsg.focus(); 
+                inputMsg.focus();
             }
         };
 
